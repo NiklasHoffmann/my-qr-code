@@ -60,10 +60,10 @@ const QRCodeGenerator = () => {
         const canvas = qrRef.current.querySelector("canvas")
         const image = canvas.toDataURL("image/png")
         const windowPrint = window.open("")
-        windowPrint.document.write(`<img src="${image}"/>`)
-        windowPrint.focus()
-        windowPrint.print()
-        windowPrint.close()
+        windowPrint.document.write(
+            `<img src="${image}" onload="window.focus(); window.print(); window.close();"/>`
+        )
+        windowPrint.document.close()
     }
 
     const shareQRCode = () => {

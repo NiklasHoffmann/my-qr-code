@@ -1,0 +1,15 @@
+  {
+    "compilerOptions": {
+      "baseUrl": "./",
+      "module": "commonjs",
+      "target": "es2020",
+      "checkJs": true,
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "allowSyntheticDefaultImports": true,
+
+    },
+    "exclude": ["node_modules", "build"],
+    "include": ["src/**/*", "server.js"]
+  }

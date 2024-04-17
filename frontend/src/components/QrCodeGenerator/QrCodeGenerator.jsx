@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import QRCode from "qrcode.react"
 import { useDropzone } from "react-dropzone"
 
+import useQrCodeActions from "hooks/useQrCodeActions"
+import { getQRCodeById } from "services/qrCodeService"
 import Btn from "../Btn/Btn"
 
 import styles from "./QrCodeGenerator.module.scss"
@@ -12,6 +14,13 @@ const QRCodeGenerator = () => {
     const [icon, setIcon] = useState("")
     const [iconSize, setIconSize] = useState(24)
     const [errorCorrectionLevel, setErrorCorrectionLevel] = useState("M")
+    const [qrCodeId, setQrCodeId] = useState(null)
+
+    const { createOrUpdateQRCode } = useQrCodeActions()
+
+    useEffect(() => {
+        setQrCodeId(null)
+    }, [inputText, icon, iconSize, errorCorrectionLevel])
 
     const handleChange = (event) => {
         setInputText(event.target.value)
@@ -45,7 +54,36 @@ const QRCodeGenerator = () => {
     }
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: "image/*" })
-    const saveQRCode = () => {
+
+    const handleQRCodeAction = async (actionType) => {
+        const canvas = qrRef.current.querySelector("canvas")
+        const image = canvas.toDataURL("image/png")
+        let actionUpdate = { [actionType]: true }
+
+        if (!qrCodeId) {
+            // Wenn noch keine QR-Code ID vorhanden ist, erstellen Sie den QR-Code mit der initialen Aktion
+            try {
+                const id = await createOrUpdateQRCode(inputText, { ...actionUpdate }, image)
+                setQrCodeId(id)
+            } catch (error) {
+                console.error(
+                    `Failed to create QR Code with initial action '${actionType}'`,
+                    error
+                )
+            }
+        } else {
+            try {
+                const currentData = await getQRCodeById(qrCodeId) // Funktion zum Abrufen des aktuellen QR-Codes
+                const currentActions = currentData.action || {}
+                const updatedActions = { ...currentActions, ...actionUpdate }
+                await createOrUpdateQRCode(inputText, updatedActions, image, qrCodeId)
+            } catch (error) {
+                console.error(`Failed to update QR Code with new action '${actionType}'`, error)
+            }
+        }
+    }
+
+    const saveQRCode = async () => {
         const canvas = qrRef.current.querySelector("canvas")
         const image = canvas.toDataURL("image/png")
         const link = document.createElement("a")
@@ -54,6 +92,7 @@ const QRCodeGenerator = () => {
         document.body.appendChild(link)
         link.click()
         document.body.removeChild(link)
+        handleQRCodeAction("downloaded")
     }
 
     const printQRCode = () => {
@@ -64,11 +103,21 @@ const QRCodeGenerator = () => {
             `<img src="${image}" onload="window.focus(); window.print(); window.close();"/>`
         )
         windowPrint.document.close()
+        handleQRCodeAction("printed")
     }
 
     const shareQRCode = () => {
+        const canvas = qrRef.current.querySelector("canvas")
+        const image = canvas.toDataURL("image/png")
+        const link = document.createElement("a")
+        link.href = image
         // Dieser Platzhalter kann durch eine Implementierung ersetzt werden, um den QR-Code über Social Media oder E-Mail zu teilen
         console.log("Teilen-Funktionalität noch zu implementieren")
+        handleQRCodeAction("shared")
+    }
+
+    const clearIcon = () => {
+        setIcon("")
     }
 
     return (
@@ -95,11 +144,12 @@ const QRCodeGenerator = () => {
                         Ziehe ein Icon hierher <br /> oder klicke, um ein Bild auszuwählen
                     </p>
                 </div>
+                <Btn onClickAction={clearIcon} buttonText={"Bild löschen"} type={"danger"} />
                 <input
                     type="text"
                     value={inputText}
                     onChange={handleChange}
-                    placeholder="Gib einen Text ein für QR Code"
+                    placeholder="Gib einen Text ein für QR deinen Code"
                     className={styles.input}
                 />
                 <input
@@ -112,9 +162,13 @@ const QRCodeGenerator = () => {
                 />
             </div>
             <div className={styles.qrCodeOptions}>
-                <Btn onClickAction={saveQRCode} buttonText={"QR-Code speichern"} />
-                <Btn onClickAction={printQRCode} buttonText={"QR-Code drucken"} />
-                <Btn onClickAction={shareQRCode} buttonText={"QR-Code teilen"} />
+                <Btn
+                    onClickAction={saveQRCode}
+                    buttonText={"QR-Code herunterladen"}
+                    type={"success"}
+                />
+                <Btn onClickAction={printQRCode} buttonText={"QR-Code drucken"} type={"success"} />
+                <Btn onClickAction={shareQRCode} buttonText={"QR-Code teilen"} type={"success"} />
             </div>
         </div>
     )

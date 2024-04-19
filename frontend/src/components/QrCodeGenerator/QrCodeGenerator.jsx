@@ -4,7 +4,7 @@ import { useDropzone } from "react-dropzone"
 
 import useQrCodeActions from "hooks/useQrCodeActions"
 import { getQRCodeById } from "services/qrCodeService"
-import Btn from "../Btn/Btn"
+import Btn from "../Btns/Btn"
 
 import styles from "./QrCodeGenerator.module.scss"
 
@@ -149,7 +149,7 @@ const QRCodeGenerator = () => {
                     type="text"
                     value={inputText}
                     onChange={handleChange}
-                    placeholder="Gib einen Text ein für QR deinen Code"
+                    placeholder="Gib einen Text ein für deinen QR Code"
                     className={styles.input}
                 />
                 <input

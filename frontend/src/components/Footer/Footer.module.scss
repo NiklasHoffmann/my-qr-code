@@ -1,9 +1,7 @@
-@use "styles/base/master" as *;
-@use "styles/base/global" as *;
-
 footer {
     padding: 20px;
-    background-color: $color-secondary-light;
+    margin-top: 100px;
+    background-color: var(--color-secondary-dark);
     text-align: center;
 }
 
@@ -13,27 +11,22 @@ footer {
     justify-content: space-between;
 }
 
+.footerLinksWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .footerLinks {
-    list-style: none;
+    display: flex;
+    flex-direction: column;
+
     padding: 0;
-    margin: 0 0 10px 0;
-}
 
-.footerLinks li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.footerLinks a {
-    color: $color-grey-dark;
-    text-decoration: none;
-}
-
-.socialMedia a {
-    margin-right: 10px;
-}
-
-.socialMedia img {
-    width: 24px;
-    height: 24px;
+    a {
+        padding: 10px;
+    }
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
 }

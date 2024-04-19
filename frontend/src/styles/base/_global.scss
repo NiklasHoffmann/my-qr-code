@@ -1,7 +1,7 @@
 .contentGrid {
     --padding-inline: 1px;
     --content-max-width: 1100px;
-    --breakout-max-width: 1400px;
+    --breakout-max-width: 1500px;
 
     --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
 
@@ -34,4 +34,18 @@ img.fullWidth {
     width: 100%;
     max-height: 45vh;
     object-fit: cover;
+}
+
+p.fullWidth {
+    width: 100%;
+    display: block;
+}
+
+.strong {
+    font-weight: 900;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
 }

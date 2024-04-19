@@ -4,6 +4,7 @@
       "paths": {
         "components/*": ["components/*"],
         "hooks/*": ["hooks/*"],
+        "media/*": ["media/*"],
         "pages/*": ["pages/*"],
         "styles/*": ["styles/*"]
       },

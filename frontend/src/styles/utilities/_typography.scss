@@ -1,0 +1,116 @@
+:root {
+    // Basisschriftarten
+    --font-primary: "Open Sans", sans-serif;
+    --font-secondary: "Roboto", sans-serif;
+
+    // Schriftgrößen
+    --font-size-base: 16px;
+    --font-size-sm: 0.875rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 2rem;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.75rem;
+    --font-size-h4: 1.5rem;
+    --font-size-h5: 1.25rem;
+    --font-size-h6: 1rem;
+
+    // Zeilenhöhe
+    --line-height-base: 1.5;
+    --line-height-tight: 1.25;
+    --line-height-loose: 1.75;
+
+    // Schriftstärken
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 900;
+
+    // Schriftstile
+    --font-style-normal: normal;
+    --font-style-italic: italic;
+
+    // Textausrichtung
+    --text-align-left: left;
+    --text-align-center: center;
+    --text-align-right: right;
+    --text-align-justify: justify;
+
+    // Andere typografische Einstellungen
+    --letter-spacing-tight: -0.5px;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 1px;
+}
+// Nutzungsbeispiel im Projekt
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-bold);
+    padding: 20px;
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 0.75em;
+    padding: 15px;
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 1em;
+    padding: 10px;
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 1.25em;
+    padding: 10px;
+}
+
+h5 {
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 1.5em;
+    padding: 10px;
+}
+
+h6 {
+    font-size: var(--font-size-h6);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 1.75em;
+    padding: 10px;
+}
+
+p {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-loose);
+    text-align: var(--text-align-justify);
+    padding: 5px;
+    margin-bottom: 0.5em;
+}
+
+li.hover {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    font-style: var(--font-style-normal);
+    transition: transform 0.3s ease;
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &:active {
+        font-style: var(--font-style-italic);
+    }
+}

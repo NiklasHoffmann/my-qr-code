@@ -1,56 +1,52 @@
-import React from "react";
-import styles from "./Footer.module.scss";
+import React from "react"
+import { Link } from "react-router-dom"
+
+import Icons from "components/Icons/Icons"
+
+import styles from "./Footer.module.scss"
 
 const Footer = () => {
     return (
-        <footer className={styles.contentGrid}>
-            <div className={`${styles.breakout} ${styles.footerWrapper}`}>
-                <ul className={styles.footerLinks}>
-                    <li>
-                        <a href='#impressum'>Impressum</a>
-                    </li>
-                    <li>
-                        <a href='#datenschutz'>Datenschutz</a>
-                    </li>
-                    <li>
-                        <a href='#agb'>AGB</a>
-                    </li>
-                </ul>
-                <div className='social-media'>
-                    <a
-                        href='https://facebook.com'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <img
-                            src='icons/facebook-icon.png'
-                            alt='Facebook'
-                        />
+        <footer className={`${styles.fullWidth} ${styles.footerWrapper}`}>
+            <ul className={styles.footerLinks}>
+                <li className={styles.hover}>
+                    <Link to="/impressum">Impressum</Link>
+                </li>
+                <li className={styles.hover}>
+                    <Link to="/datenschutz">Datenschutz</Link>
+                </li>
+                <li className={styles.hover}>
+                    <Link to="/agb">AGB</Link>
+                </li>
+            </ul>
+            <div className={styles.footerLinksWrapper}>
+                <div className={styles.footerLinks}>
+                    <a href="mailto:mail@hoffmann-niklas.de" target="_blank" rel="noopener noreferrer">
+                        <Icons iconName={"E-Mail"}></Icons>
                     </a>
-                    <a
-                        href='https://twitter.com'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <img
-                            src='icons/twitter-icon.png'
-                            alt='Twitter'
-                        />
+                    <a href="https://wa.me/+4915156593771" target="_blank" rel="noopener noreferrer">
+                        <Icons iconName={"Whatsapp"}></Icons>{" "}
                     </a>
-                    <a
-                        href='https://instagram.com'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <img
-                            src='icons/instagram-icon.png'
-                            alt='Instagram'
-                        />
+                </div>
+                <div className={styles.footerLinks}>
+                    <a href="tel:+4915156593771">
+                        <Icons iconName={"Phone"}></Icons>{" "}
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <Icons iconName={"Facebook"}></Icons>{" "}
+                    </a>
+                </div>
+                <div className={styles.footerLinks}>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                        <Icons iconName={"Twitter"}></Icons>{" "}
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <Icons iconName={"Instagram"}></Icons>{" "}
                     </a>
                 </div>
             </div>
         </footer>
-    );
-};
+    )
+}
 
-export default Footer;
+export default Footer

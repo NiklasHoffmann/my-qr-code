@@ -4,7 +4,7 @@ import styles from "./HomePage.module.scss"
 function HomePage() {
     return (
         <main className={styles.contentGrid}>
-            <div className={styles.homePage}>Willkommen auf der Startseite!</div>
+            <h2 className={styles.homePage}>Willkommen auf der Startseite!</h2>
         </main>
     )
 }

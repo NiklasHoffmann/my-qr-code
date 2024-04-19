@@ -1,4 +1,4 @@
-import { createQRCodeStatus, updateQRCodeStatus } from "../services/qrCodeService" // Importieren der Service-Funktionen
+import { createQRCodeStatus, updateQRCodeStatus } from "../services/qrCodeService"
 
 const useQRCodeActions = () => {
     const createOrUpdateQRCode = async (text, action, imageData, id = null) => {

@@ -1,9 +1,18 @@
-@use "styles/base/master" as *;
-@use "styles/base/global" as *;
-
 header {
     padding: 10px 20px;
-    background-color: $color-secondary-light;
+    background-color: var(--color-white);
+    border-bottom: solid 2px var(--color-secondary-light);
+    position: sticky;
+    top: 0;
+    h1 {
+        display: none;
+    }
+    @media (min-width: 768px) {
+        h1 {
+            display: inline;
+            padding: 0;
+        }
+    }
 }
 
 .headerWrapper {
@@ -13,37 +22,5 @@ header {
 }
 
 .logo {
-    width: 100px;
-}
-
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.menu.open {
-    display: block;
-}
-
-.burgerMenu {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        right: 0;
-        top: 60px;
-        background-color: $color-white;
-        width: 200px;
-        padding: 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .burgerMenu {
-        display: block;
-    }
+    width: 70px;
 }

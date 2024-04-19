@@ -1,0 +1,34 @@
+.BtnWrapper {
+    padding: 10px;
+}
+
+.btn {
+    color: var(--color-black);
+    padding: 10px;
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.success {
+    background-color: var(--color-success);
+}
+
+.info {
+    background-color: var(--color-info);
+}
+
+.warning {
+    background-color: var(--color-warning);
+}
+
+.danger {
+    background-color: var(--color-danger);
+}
+
+.menu {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-info);
+}

@@ -1,5 +1,5 @@
 // qrCodeService.js
-const baseURL = process.env.REACT_APP_API_BASE_URL
+const baseURL = process.env.REACT_APP_API_BASE_URL_QRCODE
 
 function base64ToBlob(base64, mimeType) {
     // Achten Sie darauf, das Format korrekt zu handhaben, insbesondere wenn Ihr Base64-String einen Data-URI-Prefix enthält

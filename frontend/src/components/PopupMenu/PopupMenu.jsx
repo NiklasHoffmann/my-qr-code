@@ -1,5 +1,7 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+
+import { useAuth } from "hooks/useAuth"
 
 import styles from "./PopupMenu.module.scss"
 
@@ -7,6 +9,8 @@ const PopupMenu = () => {
     const buttonContent = "burgerIcon"
 
     const [isOpen, setIsOpen] = useState(false)
+    const { user, logout } = useAuth()
+    const navigate = useNavigate()
 
     const toggleMenu = (event) => {
         event.stopPropagation()
@@ -23,6 +27,12 @@ const PopupMenu = () => {
         if (!event.touches) {
             setIsOpen(false)
         }
+    }
+
+    const handleLogout = (event) => {
+        event.preventDefault()
+        logout()
+        navigate("/logout")
     }
 
     return (
@@ -48,39 +58,46 @@ const PopupMenu = () => {
             </button>
             <div className={styles.popupMenu}>
                 <ul>
-                    <li>
+                    <li className="hover">
                         <Link className={styles.links} to="/">
                             Startseite
                         </Link>
                     </li>
-                    <li>
+                    <li className="hover">
                         <Link className={styles.links} to="/about">
                             Über mich
                         </Link>
                     </li>
-                    <li>
+                    <li className="hover">
                         <Link className={styles.links} to="/qrcode">
                             QrCode
                         </Link>
                     </li>
-                    <li>
+                    <li className="hover">
                         <Link className={styles.links} to="/pictures">
                             Pictures
                         </Link>
                     </li>
-                    <li>
+                    <li className="hover">
                         <Link className={styles.links} to="/code">
                             Code
                         </Link>
                     </li>
-                    <li>
-                        <Link className={styles.links} to="/more">
-                            More
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className={styles.links} to="/stuff">
-                            Stuff
+                    {user ? (
+                        <li className="hover">
+                            <Link className={styles.links} to="/myspace">
+                                Mein Bereich
+                            </Link>
+                        </li>
+                    ) : null}
+
+                    <li className="hover">
+                        <Link
+                            className={styles.links}
+                            to={user ? "/logout" : "/login"}
+                            onClick={user ? handleLogout : null}
+                        >
+                            {user ? "Logout" : "Login"}
                         </Link>
                     </li>
                 </ul>

@@ -2,10 +2,16 @@ import React from "react"
 
 import styles from "./Btn.module.scss"
 
-const Btn = ({ buttonText, onClickAction, type, children }) => {
+const Btn = ({ type, form, value, buttonText, customStyle, onClickAction, children }) => {
     return (
         <div className={styles.BtnWrapper}>
-            <button className={`${styles.btn} ${styles[type]}`} onClick={onClickAction}>
+            <button
+                type={type}
+                form={form}
+                value={value}
+                className={`${styles.btn} ${styles[customStyle]}`}
+                onClick={onClickAction}
+            >
                 {buttonText}
                 {children}
             </button>

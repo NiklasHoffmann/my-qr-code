@@ -20,26 +20,29 @@
 }
 
 .dropZone {
-    padding: 10px;
-    background-color: var(--color-white);
-    color: var(--color-black);
-    border: solid 1px var(--color-black);
-    border-radius: 5px;
+    margin: 10px;
+    padding: 5px 10px;
+    width: 350px;
+    box-shadow: inset 0 0 10px var(--color-grey-dark);
+    border-radius: 25px;
+    line-height: var(--line-height-tight);
+    font-size: var(--font-size-base);
 }
 
 .input {
     margin: 10px;
-    padding: 8px;
-    border: solid 1px var(--color-black);
-    border-radius: 5px;
-    width: 100%;
-    background-color: var(--color-white);
-    color: var(--color-black);
+    padding: 5px 10px;
+    height: 40px;
+    width: 350px;
+    box-shadow: inset 0 0 10px var(--color-grey-dark);
+    border-radius: 25px;
+    line-height: var(--line-height-tight);
+    font-size: var(--font-size-base);
 }
 
 .slider {
     color: var(--color-info);
-    width: 100%;
+    width: 250px;
 }
 
 .qrCodeOptions {

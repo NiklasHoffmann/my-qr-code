@@ -1,6 +1,6 @@
 .popupMenuWrapper {
     background-color: var(--color-white);
-    position: relative; // oder relative, je nach Bedarf
+    position: relative;
     z-index: 1000;
     display: flex;
     flex-direction: row-reverse;
@@ -10,7 +10,6 @@
     height: 50px;
     border-radius: 50%;
     transition: all 0.5s ease;
-    cursor: pointer;
 }
 
 .popupMenu {
@@ -25,12 +24,17 @@
     top: 0;
     right: 0;
     ul {
-        display: block;
-        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        padding-right: 50px;
         li {
             text-wrap: nowrap;
-            .links {
-                padding: 10px 75px 10px 50px;
+            padding: 5px 0;
+            a {
+                cursor: pointer;
+                display: block;
+                padding: 5px 20px;
             }
         }
     }

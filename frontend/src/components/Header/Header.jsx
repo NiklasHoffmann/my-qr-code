@@ -6,7 +6,7 @@ import PopupMenu from "components/PopupMenu/PopupMenu"
 
 const Header = () => {
     return (
-        <header className={`${styles.fullWidth} ${styles.headerWrapper}`}>
+        <header className="fullWidth">
             <Link to={"/"}>
                 <img src="logo.png" alt="Logo" className={styles.logo} />
             </Link>

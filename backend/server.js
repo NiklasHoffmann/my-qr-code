@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const qrCodeRoutes = require("./src/routes/qrCodeRoutes")
+const authRoutes = require("./src/routes/authRoutes")
 
 const app = express()
 const mongoUri = process.env.MONGODB_URI
@@ -18,8 +19,9 @@ mongoose
 app.use(cors({ origin: apiBaseUrl }))
 app.use(express.json())
 
-// QR Code Routen
+// Routen
 app.use("/api/qrcodes", qrCodeRoutes)
+app.use("/api/auth", authRoutes)
 
 // Fehlerbehandlung
 app.use((err, req, res, next) => {

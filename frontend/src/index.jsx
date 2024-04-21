@@ -2,15 +2,19 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import reportWebVitals from "./reportWebVitals"
 
-import App from "./App"
+import { ProvideAuth } from "hooks/useAuth"
 
-import "./index.scss"
+import App from "./App/App"
+
+require("./styles/styles.scss")
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
 root.render(
     <React.StrictMode>
-        <App />
+        <ProvideAuth>
+            <App />
+        </ProvideAuth>
     </React.StrictMode>
 )
 

@@ -66,10 +66,7 @@ const QRCodeGenerator = () => {
                 const id = await createOrUpdateQRCode(inputText, { ...actionUpdate }, image)
                 setQrCodeId(id)
             } catch (error) {
-                console.error(
-                    `Failed to create QR Code with initial action '${actionType}'`,
-                    error
-                )
+                console.error(`Failed to create QR Code with initial action '${actionType}'`, error)
             }
         } else {
             try {
@@ -99,9 +96,7 @@ const QRCodeGenerator = () => {
         const canvas = qrRef.current.querySelector("canvas")
         const image = canvas.toDataURL("image/png")
         const windowPrint = window.open("")
-        windowPrint.document.write(
-            `<img src="${image}" onload="window.focus(); window.print(); window.close();"/>`
-        )
+        windowPrint.document.write(`<img src="${image}" onload="window.focus(); window.print(); window.close();"/>`)
         windowPrint.document.close()
         handleQRCodeAction("printed")
     }
@@ -143,15 +138,7 @@ const QRCodeGenerator = () => {
                     <p>
                         Ziehe ein Icon hierher <br /> oder klicke, um ein Bild auszuwählen
                     </p>
-                </div>
-                <Btn onClickAction={clearIcon} buttonText={"Bild löschen"} type={"danger"} />
-                <input
-                    type="text"
-                    value={inputText}
-                    onChange={handleChange}
-                    placeholder="Gib einen Text ein für deinen QR Code"
-                    className={styles.input}
-                />
+                </div>{" "}
                 <input
                     type="range"
                     min="10"
@@ -160,15 +147,19 @@ const QRCodeGenerator = () => {
                     onChange={handleSizeChange}
                     className={styles.slider}
                 />
+                <Btn onClickAction={clearIcon} buttonText={"Bild löschen"} customStyle={"danger"} />
+                <input
+                    type="text"
+                    value={inputText}
+                    onChange={handleChange}
+                    placeholder="Gib einen Text ein für deinen QR Code"
+                    className={styles.input}
+                />
             </div>
             <div className={styles.qrCodeOptions}>
-                <Btn
-                    onClickAction={saveQRCode}
-                    buttonText={"QR-Code herunterladen"}
-                    type={"success"}
-                />
-                <Btn onClickAction={printQRCode} buttonText={"QR-Code drucken"} type={"success"} />
-                <Btn onClickAction={shareQRCode} buttonText={"QR-Code teilen"} type={"success"} />
+                <Btn onClickAction={saveQRCode} buttonText={"QR-Code herunterladen"} customStyle={"success"} />
+                <Btn onClickAction={printQRCode} buttonText={"QR-Code drucken"} customStyle={"success"} />
+                <Btn onClickAction={shareQRCode} buttonText={"QR-Code teilen"} customStyle={"success"} />
             </div>
         </div>
     )

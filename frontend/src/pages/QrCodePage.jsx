@@ -1,11 +1,10 @@
 import React from "react"
 import QRCodeGenerator from "components/QrCodeGenerator/QrCodeGenerator"
-import styles from "./QrCodePage.module.scss"
 
 function QrCodePage() {
     return (
-        <main className={styles.contentGrid}>
-            <div className={styles.qrCodePage}>
+        <main className="contentGrid">
+            <div className="flexCenter">
                 <QRCodeGenerator />
             </div>
         </main>

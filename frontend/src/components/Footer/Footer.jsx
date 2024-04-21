@@ -7,15 +7,15 @@ import styles from "./Footer.module.scss"
 
 const Footer = () => {
     return (
-        <footer className={`${styles.fullWidth} ${styles.footerWrapper}`}>
+        <footer className="fullWidth">
             <ul className={styles.footerLinks}>
-                <li className={styles.hover}>
+                <li className="hover">
                     <Link to="/impressum">Impressum</Link>
                 </li>
-                <li className={styles.hover}>
+                <li className="hover">
                     <Link to="/datenschutz">Datenschutz</Link>
                 </li>
-                <li className={styles.hover}>
+                <li className="hover">
                     <Link to="/agb">AGB</Link>
                 </li>
             </ul>

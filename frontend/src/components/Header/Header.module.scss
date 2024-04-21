@@ -1,4 +1,7 @@
 header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px 20px;
     background-color: var(--color-white);
     border-bottom: solid 2px var(--color-secondary-light);
@@ -13,12 +16,6 @@ header {
             padding: 0;
         }
     }
-}
-
-.headerWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .logo {
